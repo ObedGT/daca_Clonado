@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body style="background:green; background-size: auto">
+        <div align="center" style="margin-top: 50px; margin-right: 50px">
+            <h:form id="loginForm">
+                <p:growl id="growl" showDetail="true" life="4000"/>
+                <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+                <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                    <p:graphicImage value="/Images/loading3.gif" width="150" height="150"/>
+                </p:dialog>
+                <p:panel style="text-align: center; background-color: transparent; width: 400px">
+                    <h4 style="color: white">Sistema de gestion de carnets academicos</h4>
+                    <h3 style="color: white">"DACA 1.0"</h3>
+                    <p:graphicImage height="150" width="300" value="/Images/logo_uvg.jpg"/>
+                    <br/>
+                    <table align="center" cellspacing="20" style="color: white">
+                        <tr>
+                            <td>
+                                <p:outputLabel value="Correo"/>
+                            </td>
+                            <td>
+                                <p:inputText id="txtUser" value="#{indexBean.correo}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p:outputLabel value="Password"/>
+                            </td>
+                            <td>
+                                <p:password id="txtPassword" value="#{indexBean.password}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <p:commandButton id="btnIngresar" value="INGRESAR" title="Presione el boton para ingresar al sistema"
+                                                 action="#{indexBean.validarUsuario()}" update="loginForm"/>
+                            </td>
+                        </tr>
+                    </table>
+                </p:panel>
+            </h:form>
+        </div>        
+    </h:body>
+</html>
+

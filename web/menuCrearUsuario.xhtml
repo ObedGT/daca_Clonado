@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <ui:define name="content">
+        <div align="center" style="margin-top: 50px; margin-right: 50px">
+            <h1 style="color: white">NUEVO USUARIO</h1>
+            <br/>
+            <h:form id="NuevoUsuarioForm">
+                <p:growl id="growl" showDetail="true" life="4000"/>
+                <p:panel style="text-align: center; background-color: transparent; width: 800px">
+                    <table align="center" cellspacing="20" style="color: white">
+                        <tr>
+                            <td>
+                                <p:outputLabel value="CORREO"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{menuCrearUsuarioBean.correo}"/>
+                            </td>
+                            <td>
+                                <p:outputLabel value="PASSWORD"/>
+                            </td>
+                            <td>
+                                <p:password value="#{menuCrearUsuarioBean.password}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p:outputLabel value="NOMBRE"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{menuCrearUsuarioBean.nombre}"/>
+                            </td>
+                            <td>
+                                <p:outputLabel value="APELLIDO"/>
+                            </td>
+                            <td>
+                                <p:inputText value="#{menuCrearUsuarioBean.apellido}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p:outputLabel value="ROL"/>
+                            </td>
+                            <td>
+                                <p:selectOneMenu id="roles" value="#{menuCrearUsuarioBean.rol}" >
+                                    <f:selectItem itemValue="-1" itemLabel="Seleccione"/>
+                                    <f:selectItems value="#{menuCrearUsuarioBean.listaRoles}"  />
+                                </p:selectOneMenu>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td colspan="4" align="center">
+                                <p:commandButton value="Registrar" icon="ui-icon-disk" action="#{menuCrearUsuarioBean.validarUsuario()}" update="NuevoUsuarioForm"/>
+                            </td>
+                        </tr>
+                    </table>
+                </p:panel>
+            </h:form>
+        </div>        
+    </ui:define>
+</ui:composition>

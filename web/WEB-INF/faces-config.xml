@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>administrador</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>director</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>coordinador</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>usuario</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/menuAdministrador.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>crear</from-outcome>
+            <to-view-id>/menuCrearUsuario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>actualizar</from-outcome>
+            <to-view-id>/menuCrearUsuario.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ver</from-outcome>
+            <to-view-id>/menuCrearUsuario.xhtml</to-view-id>
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/menuAdministrador.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <managed-bean>
+        <description>Bean que gestiona la logica del login</description>
+        <managed-bean-name>indexBean</managed-bean-name>
+        <managed-bean-class>beans.IndexBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>ManagedBean encargado de gestionar el login del usuario a nivel del modelo</description>
+        <managed-bean-name>indexDbAction</managed-bean-name>
+        <managed-bean-class>dbActions.IndexDbAction</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la estructura de un usuario</description>
+        <managed-bean-name>usuario</managed-bean-name>
+        <managed-bean-class>pojos.Usuario</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene el menu del administrador</description>
+        <managed-bean-name>menuAdministradorBean</managed-bean-name>
+        <managed-bean-class>beans.MenuAdministradorBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <description>Pojo que contiene la logica de crear usuarios</description>
+        <managed-bean-name>menuCrearUsuarioBean</managed-bean-name>
+        <managed-bean-class>beans.MenuCrearUsuarioBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+</faces-config>
